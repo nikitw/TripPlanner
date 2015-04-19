@@ -1,0 +1,9 @@
+# run npm install in the project directory
+# make sure mongod is running and listening on its default port
+# start the app listener by running _> node bin/www
+
+# Currently the application can run only on the localhost
+# JSONP support enabled
+# REST API using Node Express
+# data store from Mongodb
+# UI with AngularJS

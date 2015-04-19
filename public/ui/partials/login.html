@@ -1,0 +1,93 @@
+<div class="loading" ng-show="loading">
+    <h2>Loading</h2>
+</div>
+
+<div class="error-view" ng-show="err">
+    <pre><code ng-bind="err.message"></code></pre>
+</div>
+<div class="row">
+    <div class="col-xs-6">
+        <form class="form-signin" >
+            <h2 class="form-signin-heading">Sign in</h2>
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input ng-model="loginUser.username" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input ng-model="loginUser.password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+            <button ng-click="login()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+
+            <span><a href="#/signup" ng-show="chpass">New User</a></span>
+            &nbsp;<span ng-show="chpass">|</span>
+            <span ng-click="forgotPassword()" ng-show="chpass"><a>forgot password</a></span>
+        </form>
+    </div>
+
+    <div class="col-xs-6">
+        <form class="create-form">
+            <h2 class="form-signin-heading">Sign up</h2>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Email&nbsp;</span>
+                </span>
+                <input ng-model="newUser.username" type="email" id="inEmail" class="form-control" placeholder="Email address / Username" required autofocus>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Full Name&nbsp;</span>
+                </span>
+                <input ng-model="newUser.name" type="text" id="inputName" class="form-control" placeholder="Name" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Password&nbsp;</span>
+                </span>
+                <input ng-model="newUser.password" type="password" id="inPassword" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Retype Password&nbsp;</span>
+                </span>
+                <input ng-model="newUser.cPassword" type="password" id="cPassword" class="form-control" placeholder="Confirm Password" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Date of Birth&nbsp;</span>
+                </span>
+                <input ng-model="newUser.dob" type="date" id="dob" class="form-control" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>Address&nbsp;</span>
+                </span>
+                <input ng-model="newUser.address[0].add1" type="text" id="address1" class="form-control" placeholder="Address line 1">
+                <input ng-model="newUser.address[0].add2" type="text" id="address2" class="form-control" placeholder="Address line 2">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*City&nbsp;</span>
+                </span>
+                <input ng-model="newUser.address[0].city" type="text" id="city" class="form-control" placeholder="City" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*State&nbsp;</span>
+                </span>
+                <input ng-model="newUser.address[0].state" type="text" id="State" class="form-control" placeholder="State" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>*Zip&nbsp;</span>
+                </span>
+                <input ng-model="newUser.address[0].zip" type="text" id="zip" class="form-control" placeholder="Zip" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    <span>Phone&nbsp;</span>
+                </span>
+                <input ng-model="newUser.phone" type="number" id="phone" class="form-control" placeholder="Phone">
+            </div>
+            <br/>
+            <button ng-click="register()" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        </form>
+    </div>
+</div>

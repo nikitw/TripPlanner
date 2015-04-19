@@ -1,0 +1,87 @@
+<div class="loading" ng-show="loading">
+    <h2>Loading</h2>
+</div>
+
+<div ng-show="err" class="error-view">
+    <pre><code ng-bind="err.message"></code></pre>
+</div>
+<div class="row search-bar">
+    <div class="col-xs-2">
+        <span class="title">Trips</span>
+    </div>
+    <div class="col-xs-7">
+        <!-- Search bar -->
+        <form>
+            <div class="input-group">
+                <span class="input-group-addon cursor-pointer month-cal"><span class="glyphicon glyphicon-download">
+                    <input type="hidden" class="month-cal-input" ng-click="filterMonth()">
+                </span></span>
+                <input ng-model="filter.keyword" type="text" class="form-control" placeholder="Search">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default" id="go-search" ng-click="searchTrips()"><span class="glyphicon glyphicon-search"></span></button>
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="advanced-search"><span class="glyphicon glyphicon-chevron-down arrow"></span></button>
+                    <div class="custom-drop-down pull-right" id="advanced-search">
+                        <h6>Start date</h6>
+                        <div class="input-daterange input-group" id="datepicker">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            <input ng-model="filter.start" type="text" class="form-control" name="start" placeholder="from"/>
+                            <span class="input-group-addon"><span class=" glyphicon glyphicon-chevron-right"></span></span>
+                            <input ng-model="filter.end" type="text" class="form-control" name="end" placeholder="to"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-xs-1">
+        <a href="#/home" class="pull-right" ng-click="printTravelPlan()"><span class="glyphicon glyphicon-print action print-all"></span></a>
+    </div>
+    <div class="col-xs-1">
+        <a href="#/home" class="pull-right"><span class="glyphicon glyphicon-resize-full action toggle-all open"></span></a>
+    </div>
+    <div class="col-xs-1">
+        <a href="#/trips" class="pull-right"><span class="glyphicon glyphicon-plus action add-trip"></span></a>
+    </div>
+</div>
+
+<div class="trip-list">
+    <div ng-if="tripList.length != 0">
+        <div class="row item cursor-pointer" ng-repeat="trip in tripList">
+            <div class="col-xs-3 text-overflow-hide"><strong>{{trip.dest}}</strong></div>
+            <div class="col-xs-2 text-overflow-hide">
+                <span class="glyphicon glyphicon-{{trip.pending}} item-status">
+                    <b><i>{{trip.pending === "ok" || trip.pending === "briefcase" || trip.pending === "plane"? "" : trip.pending}}</i></b>
+                    <i>{{trip.pending === "ok"? "done" : ""}}</i>
+                    <i>{{trip.pending === "briefcase"? "ready?" : ""}}</i>
+                    <i>{{trip.pending === "plane"? "ongoing" : ""}}</i>
+                    <i>{{trip.pending === "ok" || trip.pending === "briefcase" || trip.pending === "plane"? "" : trip.pending === 1? "day left" : "days left"}}</i>
+                </span>
+            </div>
+            <div class="col-xs-5">
+                <span class="glyphicon glyphicon-calendar"></span>
+                <span class="text-nowrap">{{trip.start}}</span>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="text-nowrap">{{trip.end}}</span>
+            </div>
+            <div class="col-xs-2">
+                <a href="#/home" class="pull-right" ng-click="deleteTrip(trip._id)"><span class="glyphicon glyphicon-trash item-action item-del item-action-orange"></span></a>
+            </div>
+            <div class="col-xs-10 clear-float item-desc text-overflow-hide">
+                <span><b>To: </b>{{trip.dest}}</span> <span><b>Comments: </b>{{trip.comment}}</span>
+            </div>
+            <div class="col-xs-2">
+                <a href="#/trips/{{trip._id}}" class="pull-right"><span class="glyphicon glyphicon-pencil item-action item-edit item-action-yellow"></span></a>
+            </div>
+        </div>
+    </div>
+    <div ng-if="tripList.length == 0">
+        <div class="row item">
+            <div class="col-xs-12 text-muted">
+                <h4><i>No trips found!</i></h4>
+            </div>
+            <div class="col-xs-10 clear-float item-desc text-muted">
+                <span><i>You can add trips by clicking on the <span class="glyphicon glyphicon-plus"></span> sign located at the top-right corner of this view port.</i></span>
+            </div>
+        </div>
+    </div>
+</div>

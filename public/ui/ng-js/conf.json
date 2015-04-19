@@ -1,0 +1,21 @@
+{
+ "ver": {
+    "version": "0.0",
+    "dev": "waghelanikit@gmail.com",
+    "name": "TripPlanner",
+    "desc": "(MEAN stack)",
+    "node": "10.1"
+  },
+  "ui": {
+    "dateRangeClass" : "input-daterange",
+    "errorViewClass" : "error-view",
+    "itemClass"      : "item",
+    "itemDescClass"  : "item-desc",
+    "itemEditClass"  : "item-edit",
+    "itemDeleteClass": "item-del",
+    "itemListClass"  : "trip-list",
+    "searchBarClass" : "search-bar",
+    "destInputId"    : "destAutoComplete"
+  }
+}
+

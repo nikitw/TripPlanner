@@ -1,0 +1,264 @@
+.bg {
+  background: url("http://www.psdgraphics.com/file/colorful-triangles-background.jpg") repeat 50% 50%;
+  position: fixed;
+  width: 100%;
+  height: 300%;
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+	margin-bottom: 10px;
+}
+.form-signin .checkbox {
+	font-weight: normal;
+}
+.form-signin .form-control {
+	position: relative;
+	height: auto;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+}
+.form-signin .form-control:focus {
+	z-index: 2;
+}
+.form-signin input[type="email"] {
+	margin-bottom: -1px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+	margin-bottom: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.form-signin input[id="cPassword"] {
+	margin-bottom: -1px;
+    border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.form-signin input[id="inputName"] {
+	margin-bottom: -1px;
+    border-top-right-radius: 0;
+	border-top-left-radius: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.form-signin input[id="hint"] {
+	margin-bottom: 10px;
+  border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+body {
+	padding-top: 50px;
+	padding-bottom: 50px;
+}
+.starter-template {
+	padding: 40px 15px;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+.section {
+	background: #fff;
+	border-radius: 5px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	padding: 20px;
+}
+
+
+.loading {
+  position: fixed;
+  z-index: 200;
+  top: 50%;
+  left: 50%;
+  background: #000;
+  opacity: 0.3;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  width:200px;
+  padding-top:10px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -100px;
+}
+
+div.b {
+  font-weight: bold;
+}
+
+.create-form {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.error-view {
+    position: fixed;
+    top: 50px;
+    left: 50%;
+    width: 500px;
+    margin-left: -250px;
+    z-index: 200;
+}
+
+.error-view pre code {
+    color: darkred;
+}
+
+div.item {
+    height: 50px;
+    padding-top: 15px;
+    margin: 0 -20px;
+    border-left: 5px solid silver;
+}
+
+div.item:hover {
+    background-color: #bce8f1;
+    border-left: 5px solid green;
+}
+
+.item-edit {
+    display: none;
+}
+
+div.item:hover .del{
+    display: block;
+}
+
+div.item:hover .item-del{
+    background-color: indianred;
+}
+
+div.item:hover .item-edit{
+    background-color: #f3e97a;
+}
+
+div.item-desc {
+    height: 30px;
+    padding-top: 5px;
+    display: none;
+}
+
+.clear-float {
+    clear: both;
+}
+
+div.trip-list .item-open {
+    background-color: #f6f6f6;
+    border-left: 5px solid #0088cc;
+    height: 92px;
+}
+
+.item-action-orange {
+    background-color: orange;
+}
+
+.item-action-red {
+    background-color: indianred;
+}
+
+.item-action-yellow {
+    background-color: #f3e97a;
+}
+
+.item-action {
+    padding: 18px;
+    margin-top: -16px;
+    margin-right: -16px;
+    margin-bottom: 8px;
+}
+
+.item a {
+    color: #f6f6f6;
+}
+
+.search-bar {
+    background-color: #0088cc;
+    margin-top: -20px;
+    padding: 15px;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.search-bar a {
+    color: #f6f6f6;
+}
+
+.search-bar .add-trip {
+
+}
+
+.search-bar .open {
+
+}
+
+.search-bar .action {
+    padding: 1px;
+    margin-top: -3px;
+    margin-right: -17px;
+    margin-bottom: 8px;
+}
+
+.search-bar .title {
+    color: #f6f6f6;
+    font-size: large;
+    font-weight: bold;
+}
+
+.search-bar form {
+    margin: -5px 0;
+}
+
+.custom-drop-down {
+    position: absolute;
+    margin-top: 2px;
+    min-width: 300px;
+    max-width: 330px;
+    height: auto;
+    background-color: #fff;
+    z-index: 10;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    right: 0;
+    padding: 10px;
+    display: none;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(85,85,85,1);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(85,85,85,1);
+    box-shadow: 0px 0px 5px 0px rgba(85,85,85,1);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-overflow-hide {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#navbar {
+    margin-right: 20px;
+}

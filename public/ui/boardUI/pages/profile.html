@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-lg-12">
+            <span ng-if="usr" class="profile-picture" style="background: url('/users/photos/{{usr.profilePic}}') no-repeat 50% 50%">
+            </span>
+            <div ng-if="rootUser" class="profile-picture-change">
+                <a href="#/profile" ng-click="selectImage()">
+                    <span class="fa fa-pencil fa-fw"></span>
+                </a>
+            </div>
+            <form id="profilePicture" style="display: none">
+                <input type="file" id="picture" name="profileImage" onchange="angular.element(this).scope().uploadPicture()">
+            </form>
+            <span class="profile-title">
+                {{usr.name}}
+            </span>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>About</strong>
+                <a ng-if="rootUser && !editUser" href="#/profile" ng-click="editUserDetails()" class="btn btn-default btn-sm pull-right"><span class="fa fa-pencil fa-fw"></span> Edit</a>
+                <a ng-if="editUser" href="#/profile" ng-click="clearEdit()" class="btn btn-default btn-sm pull-right"><span class="fa fa-remove fa-fw"></span> Cancel</a>
+            </div>
+            <div class="panel-body" ng-hide="editUser">
+                <div class="add-trip">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            Email:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.username}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            Date of Birth:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.dob}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            Address:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.address[0].add1}} {{usr.address[0].add2}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            City:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.address[0].city}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            State:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.address[0].state}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            Zip:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.address[0].zip}}
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            Phone:
+                        </div>
+                        <div class="col-xs-7">
+                            {{usr.phone}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body" ng-show="editUser">
+                <div class="edit-user-form">
+                    <form>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                            <input type="text" class="form-control" placeholder="Name" disabled  value="{{editUser.name}} | {{editUser.username}}"/>
+                        </div>
+
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            <input  ng-model="editUser.dob" type="date" class="form-control" placeholder="Date of Birth" />
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span></span>
+                            <input  ng-model="editUser.address[0].add1" type="text" class="form-control first" placeholder="Address line 1">
+                            <input  ng-model="editUser.address[0].add2" type="text" class="form-control" placeholder="Address line 2">
+                            <input  ng-model="editUser.address[0].city" type="text" class="form-control" placeholder="City">
+                            <input  ng-model="editUser.address[0].state" type="text" class="form-control" placeholder="State">
+                            <input  ng-model="editUser.address[0].zip" type="text" class="form-control last" placeholder="Zip">
+                        </div>
+                        <br/>
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></span>
+                            <input  ng-model="editUser.phone" type="number" class="form-control" placeholder="Phone">
+                        </div>
+                        <br/>
+                        <a href="#/profile" ng-click="save()" class="btn btn-default btn-sm"><span class="fa fa-check fa-fw"></span> save</a>
+                    </form>
+                </div>
+            </div>
+            <div class="panel-footer text-muted">
+                <span ng-if="usr.apiKey">apiKey: {{usr.apiKey}}</span>
+                <span ng-if="isFriend(usr) != true && !rootUser"><a href="#/profile" ng-click="requestFriend()" class="btn btn-default btn-sm">
+                    <span class="fa fa-plus fa-fw"></span>
+                    Friend
+                </a>
+                </span>
+                <span ng-if="isFriend(usr) == true">
+                    <i>Already friend</i>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

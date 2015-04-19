@@ -1,0 +1,64 @@
+<div class="loading" ng-show="loading">
+    <h2>Loading</h2>
+</div>
+
+<div ng-show="err" class="error-view">
+    <pre><code ng-bind="err.message"></code></pre>
+</div>
+
+<div class="row search-bar">
+    <div class="col-xs-6">
+        <span class="title">Add Trip</span>
+    </div>
+    <div class="col-xs-4">
+        <!-- Search bar -->
+    </div>
+    <div class="col-xs-2">
+        <a href="#/home" class="pull-right"><span class="glyphicon glyphicon-remove action cancel"></span></a>
+    </div>
+</div>
+
+<div class="create-form">
+
+    <form>
+        <div class="row">
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-map-marker"></span></span>
+                    <input  ng-model="trip.dest" type="text" class="form-control destAutoComplete" placeholder="Destination" data-toggle="advancedSearch">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default dropdown-toggle" id="dropdown" data-toggle="advancedSearch"><span class="glyphicon glyphicon-chevron-down"></span></button>
+                        <div class="custom-drop-down pull-right" id="advancedSearch">
+                            <h6 ng-repeat="city in advancedSearch" class="hideOnClick cursor-pointer" ng-click="trip.dest = city">{{city}}</h6>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <br/>
+        <div class="row">
+                <div class="input-daterange input-group" id="datepicker">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    <input ng-model="trip.start" type="text" class="form-control" name="start" placeholder="Start"/>
+                    <span class="input-group-addon"><span class=" glyphicon glyphicon-chevron-right"></span></span>
+                    <input ng-model="trip.end" type="text" class="form-control" name="end" placeholder="End"/>
+                </div>
+
+        </div>
+        <br/>
+        <div class="row">
+
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        <span>Comment&nbsp;</span>
+                        <span class="glyphicon glyphicon-pencil"></span></span>
+                    <textarea ng-model="trip.comment" class="form-control" placeholder="Comments or purpose of trip!"></textarea>
+                </div>
+
+        </div>
+        <br/>
+        <div class="row">
+
+                <button type="submit" ng-click="createTrip()" class="btn btn-primary btn-lg btn-block">Create</button>
+
+        </div>
+    </form>
+</div>

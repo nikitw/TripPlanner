@@ -1,0 +1,96 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Trips
+            <a href="#/trips">
+                <span class="glyphicon glyphicon-plus pull-right"></span>
+            </a>
+        </h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div ng-repeat="trip in tripList">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <strong>{{trip.dest}}</strong>
+                    <span class="glyphicon glyphicon-{{trip.pending}} item-status pull-right">
+                        <b><i>{{trip.pending === "ok" || trip.pending === "briefcase" || trip.pending === "plane"? "" : trip.pending}}</i></b>
+                        <i>{{trip.pending === "ok"? "done" : ""}}</i>
+                        <i>{{trip.pending === "briefcase"? "ready?" : ""}}</i>
+                        <i>{{trip.pending === "plane"? "ongoing" : ""}}</i>
+                        <i>{{trip.pending === "ok" || trip.pending === "briefcase" || trip.pending === "plane"? "" : trip.pending === 1? "day left" : "days left"}}</i>
+                    </span>
+                </div>
+                <div class="panel-body trip-body">
+                    <div class="trip-image-container">
+                        <img ng-show="trip.img" src="{{trip.img}}"/>
+                        <img ng-hide="trip.img" src="../images/default-trip-image.jpg"/>
+                    </div>
+                    <div class="trip-data-container">
+                        <div class="col-lg-8">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                            <span class="text-nowrap">{{trip.start}}</span>
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="text-nowrap">{{trip.end}}</span>
+                        </div>
+                        <div class="col-lg-4" ng-init="numDays = getLength(trip)">
+                            <span class="circle-lg circle-border-{{statusType(trip.pending)}} pull-right">
+                                {{numDays}}
+                                <span ng-if="trip.pending === 'plane'" class="circle-lg-progress progress-{{getPercComplete(trip)}}">{{numDays}}</span>
+                            </span>
+                        </div>
+                        <div class="col-lg-10 clear-float item-desc text-overflow-hide">
+                            <span><b>Agenda: </b>{{trip.comment}}</span>
+                        </div>
+                        <div class="col-lg-6 trip-user-list">
+                            <div>
+                                <b>Triptsers: {{trip.users.length + 1}}&nbsp;</b>
+                            </div>
+                            <span>
+                                <a href='#/profile/{{trip.owner._id}}'>
+                                    <span class="fa fa-key fa-fw"></span>
+                                    {{ownership.owned == true? "you": trip.owner.name}}
+                                </a>
+                            </span>
+                            <span ng-repeat="usr in trip.users">
+                                ,<a href='#/profile/{{usr._id}}'>{{user.name == usr.name? "you": usr.name}}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-muted" ng-init="ownership = isOwner(trip)">
+                    <div class="row" ng-if="ownership.owned == true">
+                        <div class="col-lg-12">
+                            <span class="fa fa-lock"></span> {{trip.access}}
+                            <a href="#/home" ng-click="deleteTrip(trip._id)" class="btn btn-default btn-sm pull-right"><span class="fa fa-trash fa-fw"></span> Remove</a>
+                            <a ng-show="trip.pending != 'ok'" href="#/trips/{{trip._id}}" class="btn btn-default btn-sm pull-right"><span class="fa fa-pencil fa-fw"></span> Edit</a>
+                        </div>
+                    </div>
+                    <div class="row" ng-if="ownership.joined == true">
+                        <div class="col-lg-12" ng-show="trip.pending != 'ok'">
+                            <span class="fa fa-location-arrow"></span> Going
+                            <span class="fa fa-lock"></span> {{trip.access}}
+                            <a href="#/home" ng-click="unjoinTrip(trip)" class="btn btn-sm btn-default pull-right"><span class="fa fa-chain-broken fa-fw"></span> Leave</a>
+                        </div>
+                        <div class="col-lg-12" ng-show="trip.pending == 'ok'">
+                            <span class="fa fa-lock"></span> {{trip.access}}
+                            <span class="fa fa-check fa-fw"></span> done
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-if="tripList.length == 0">
+    <div class="row item">
+        <div class="col-xs-12 text-muted">
+            <h4><i>No trips found!</i></h4>
+        </div>
+        <div class="col-xs-10 clear-float item-desc text-muted">
+            <span><i>You can add trips by clicking on the <span class="glyphicon glyphicon-plus"></span> sign located at the top-right corner of this view port.</i></span>
+        </div>
+    </div>
+</div>
