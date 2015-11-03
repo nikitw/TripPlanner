@@ -1,3 +1,3 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+# DEMO
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+http://net4.ccs.neu.edu/home/nwaghela/tripPlanner
